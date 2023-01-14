@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="columns">
+        <div class="column">
+            RUT:
+            <input class="input" type="text" placeholder="Text input">
+        </div>        
+    </div>
+    <div class="columns">
+        <div class="column">
+            Tipo de servicio:
+            <div class="select">
+                <select (change)="servicio_seleccionado($event)" id="servicio" [value]="">
+                    <option>Select dropdown</option>
+                    <option *ngFor="let item of servicios" value="{{item}}">{{item}}</option>
+                </select>
+            </div>
+        </div>         
+    </div>
+    <div class="columns" *ngIf="mostrar">
+        <div class="column">
+            Especializado:
+            <div class="select">
+                <select>
+                    <option>Select dropdown</option>
+                    <option *ngFor="let item of especialidades">{{item}}</option>
+                </select>
+            </div>
+        </div>         
+    </div>
+      <button class="button">Continuar</button>  
+</div>
