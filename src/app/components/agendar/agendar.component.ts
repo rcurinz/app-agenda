@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ManagerApiService } from 'src/app/services/manager-api.service';
 
 @Component({
   selector: 'app-agendar',
@@ -7,35 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AgendarComponent implements OnInit {
 
-  servicios = [
-    "Ingles",
-    "Servicio Tecnico Computacional",
-    "Calculo"
-  ]
-  
-  especialidades = {
-    "Ingles": {
-      1:"Enseñanza basica",
-      2:"Enseñanza media",
-      3:"Enseñanza superior"
-    },
-    "Servicio Tecnico Computacional": {
-      1:"Instalacion de software",
-      2:"Formateo",
-      3:"Limpieza de sistema operativo"
-    },
-    "Calculo": {
-      1:"Logaritmo",
-      2:"Integrales",
-      3:"Derivadas",
-      4:"Optimizacion"
-    }
-  }
+  servicios;
+  especialidades ;
   mostrar = false;
+  servicio_selc = "";
 
-  constructor() { }
+  constructor(private manageApi: ManagerApiService) { }
 
   ngOnInit(): void {
+    this.getService();
   }
 
   servicio_seleccionado(event: any) {
@@ -44,7 +25,20 @@ export class AgendarComponent implements OnInit {
     if(serv !== ""){
       this.mostrar = true;
     }
-    
   }
+
+  getService(){
+    this.manageApi.getService().subscribe(
+      (data)=>{
+        this.servicios = data['servicios'];
+      }
+  )};
+
+  getEspecialidades(servicio){
+    this.manageApi.getEspecialidades(servicio.target.value).subscribe(
+      (data)=>{
+        this.especialidades = data['especialidades'];
+      }
+  )}
 
 }
