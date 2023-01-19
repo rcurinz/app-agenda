@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AgendarComponent } from './components/agendar/agendar.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { AgendarComponent } from './components/agendar/agendar.component';
     LoginComponent,
     HomeComponent,
     AgendarComponent,
+    NavBarComponent,
 
 
   ],
