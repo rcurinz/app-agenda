@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ManagerApiService } from 'src/app/services/manager-api.service';
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-agendar',
@@ -13,9 +14,10 @@ export class AgendarComponent implements OnInit {
   mostrar = false;
   servicio_selc = "";
 
-  constructor(private manageApi: ManagerApiService) { }
+  constructor(private manageApi: ManagerApiService,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.servicio_selc = this.route.snapshot.paramMap.get("servi");
     this.getService();
   }
 

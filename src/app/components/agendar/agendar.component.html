@@ -11,7 +11,7 @@
             <div class="select">
                 <select (change)="getEspecialidades($event);servicio_seleccionado($event)" id="servicio" [value]="" >
                     <option>Seleccione</option>
-                    <option *ngFor="let item of servicios" value="{{item['id']}}">{{item['name']}}</option>
+                    <option *ngFor="let item of servicios" value="{{item['id']}}" [attr.selected]="item['name']===servicio_selc ? true : null">{{item['name']}}</option>
                 </select>
             </div>
         </div>

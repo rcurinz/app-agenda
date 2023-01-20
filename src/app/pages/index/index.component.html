@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="tile is-ancestor">
+      <div class="tile is-vertical " >
+        <div class="tile">
+          <div class="card" style="margin-top: 20px;">
+            <h1 class="title">Nuestros servicios</h1>
+            <p-dataView #dv [value]="products" [paginator]="false" [rows]="9" filterBy="name"
+                [sortField]="sortField" [sortOrder]="sortOrder" layout="grid">
+                <ng-template let-product pTemplate="listItem">
+                    <div class="p-col-12">
+                        <div class="product-list-item">
+                            <div class="product-list-detail">
+                                <div class="product-name">{{product.name}}</div>
+                                <div class="product-description">{{product.descripcion}}</div>
+                                <p-rating [ngModel]="product.duracion" [readonly]="true" [cancel]="false"></p-rating>
+                                <i class="pi pi-tag product-category-icon"></i><span class="product-category">{{product.precio}}</span>
+                            </div>
+                            <div class="product-list-action">
+                                <span class="product-price">${{product.precio}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template let-product pTemplate="gridItem">
+                    <div class="col-12 md:col-4">
+                        <div class="product-grid-item card">
+                            <div class="product-grid-item-top">
+                                <div>
+                                    <span class="product-category"></span>
+                                </div>
+                                <span [class]="'product-badge status-'"></span>
+                            </div>
+                            <div class="product-grid-item-content">
+                                <div class="product-name">{{product.name}}</div>
+                                <div class="product-description" style="font-size: 12px; text-align: justify;">{{product.descripcion}}</div>
+                            </div>
+                            <div class="product-grid-item-bottom">
+                              <button class="button is-info" style="width: 100%;" [routerLink]="['/home','agendar', product.name]">Agendar</button>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-dataView>
+          </div>
+          <!--<div class="columns">
+              <div class="column">
+                  Nuestros Servicios
+                  <button class="button" [routerLink]="['/home','agendar']">Agendar servicio</button>
+              </div>
+          </div>-->
+        </div>
+      </div>
+    </div>
+</div>
