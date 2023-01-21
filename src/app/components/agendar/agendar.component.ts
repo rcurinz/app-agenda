@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ManagerApiService } from 'src/app/services/manager-api.service';
 import { ActivatedRoute } from "@angular/router";
-
+import {SelectItem} from 'primeng/api';
 @Component({
   selector: 'app-agendar',
   templateUrl: './agendar.component.html',
@@ -13,16 +13,25 @@ export class AgendarComponent implements OnInit {
   especialidades ;
   mostrar = false;
   servicio_selc = "";
+  value8;
+  cities;
+  items: SelectItem[];
+  item: string;
 
-  constructor(private manageApi: ManagerApiService,private route: ActivatedRoute) { }
+  constructor(private manageApi: ManagerApiService,private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.items = [];
+        for (let i = 0; i < 10000; i++) {
+            this.items.push({label: 'Item ' + i, value: 'Item ' + i});
+        }
     this.servicio_selc = this.route.snapshot.paramMap.get("servi");
     this.getService();
+    this.getEspecialidades(this.servicio_selc);
   }
 
-  servicio_seleccionado(event: any) {
-    var serv = event.target.value;
+  servicio_seleccionado() {
+    var serv = this.servicio_selc
     console.log(serv);
     if(serv !== ""){
       this.mostrar = true;
@@ -37,7 +46,7 @@ export class AgendarComponent implements OnInit {
   )};
 
   getEspecialidades(servicio){
-    this.manageApi.getEspecialidades(servicio.target.value).subscribe(
+    this.manageApi.getEspecialidades(servicio).subscribe(
       (data)=>{
         this.especialidades = data['especialidades'];
       }

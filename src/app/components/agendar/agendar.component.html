@@ -1,4 +1,45 @@
 <div class="container">
+  <div class="card" style="width: 500px;">
+    <div class="card-content">
+      <div class="content">
+        <div class="columns">
+          <div class="column">
+            <h1 class="title">Agendar servicio</h1>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column">
+            Rut
+          </div>
+          <div class="column">
+            <input type="text" pInputText class="p-inputtext-sm" placeholder="12.345.678-9">
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column">
+            Servicio:
+          </div>
+          <div class="column">
+            <div class="select">
+              <select (change)="getEspecialidades($event);servicio_seleccionado()">
+                <option *ngFor="let item of servicios" value="{{item['id']}}" [attr.selected]="item['name']===servicio_selc ? true : null">{{item['name']}}</option>
+              </select>
+            </div>
+          </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          Especialidad:
+        </div>
+        <div class="column">
+          <div class="select">
+            <select>
+              <option *ngFor="let item of especialidades">{{item['name']}}</option>
+            </select>
+          </div>
+        </div>
+    </div>
+  </div>
     <div class="columns">
         <div class="column">
             RUT:
@@ -9,7 +50,7 @@
         <div class="column">
             Tipo de servicio:
             <div class="select">
-                <select (change)="getEspecialidades($event);servicio_seleccionado($event)" id="servicio" [value]="" >
+                <select (change)="getEspecialidades($event);servicio_seleccionado()" id="servicio" [value]="" >
                     <option>Seleccione</option>
                     <option *ngFor="let item of servicios" value="{{item['id']}}" [attr.selected]="item['name']===servicio_selc ? true : null">{{item['name']}}</option>
                 </select>

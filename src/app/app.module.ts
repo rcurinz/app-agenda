@@ -32,6 +32,8 @@ import {DropdownModule} from 'primeng/dropdown';
 import {InputTextModule} from 'primeng/inputtext';
 import {RatingModule} from 'primeng/rating';
 import {RippleModule} from 'primeng/ripple';
+import {SelectButtonModule} from 'primeng/selectbutton';
+import {OverlayPanelModule} from 'primeng/overlaypanel';
 
 
 @NgModule({
@@ -60,7 +62,9 @@ import {RippleModule} from 'primeng/ripple';
     DropdownModule,
     InputTextModule,
     RatingModule,
-    RippleModule
+    RippleModule,
+    SelectButtonModule,
+    OverlayPanelModule
   ],
   providers: [],
   bootstrap: [AppComponent]
